@@ -1,0 +1,52 @@
+.input-number {
+  input[type='number'] {
+    border: 0.2rem solid var(--color-secondary);
+    box-shadow: 0 0.125rem 0.2rem rgba($color-black, 0.5);
+    border-radius: 0.25rem;
+    width: 2.5rem;
+    line-height: 1.5rem;
+    padding-left: 0.15rem;
+
+    &:hover:not([disabled]) {
+      border: 0.2rem solid var(--color-tertiary);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+    }
+  }
+
+  &__arrows {
+    position: relative;
+
+    &:after,
+    &:before {
+      position: absolute;
+      right: 0.15rem;
+      width: 1.05rem;
+      height: 0.79rem;
+      font-size: 0.6rem;
+      pointer-events: none;
+      background-color: var(--color-primary);
+      color: var(--color-font);
+      z-index: 1;
+      text-align: end;
+      padding-right: 0.1rem;
+    }
+
+    &:before {
+      content: '\25B2';
+      top: 0.17rem;
+    }
+
+    &:after {
+      content: '\25BC';
+      bottom: 0.175rem;
+    }
+  }
+
+  &__asterisk {
+    color: $color-highlight;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,55 @@
+.definition {
+  h6 {
+    font-size: 105%;
+    margin-bottom: 0.3rem;
+    text-align: center;
+  }
+
+  details > p {
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    height: auto;
+  }
+
+  details[open] {
+    > p {
+      height: auto;
+      max-height: 100rem;
+      height: auto;
+      white-space: pre-line;
+    }
+
+    summary:after {
+      content: ' ⮟';
+      position: absolute;
+      right: -0.5rem;
+      top: 0.75rem;
+    }
+  }
+
+  details > summary {
+    list-style: none;
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
+
+    p {
+      display: inline;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: ' ➤';
+      position: absolute;
+      right: -0.5rem;
+      top: 0.75rem;
+    }
+  }
+}

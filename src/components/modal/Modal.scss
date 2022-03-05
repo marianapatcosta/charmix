@@ -1,0 +1,67 @@
+.modal {
+  &__overlay {
+    background-color: rgba($color-black, 0.7);
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+  }
+
+  &__content {
+    background-color: var(--color-primary);
+    box-shadow: 0 0.125rem 0.5rem rgba($color-black, 0.7);
+    margin: auto;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+    width: 100%;
+    max-width: 25rem;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  &__header {
+    background-color: var(--color-secondary);
+    box-shadow: 0 0.125rem 0.2rem rgba($color-black, 0.5);
+    font-family: $font-title;
+    font-size: 140%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625rem;
+    position: relative;
+
+    button {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      -webkit-transition: all 0.2s ease-in-out;
+      -moz-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+
+      &:hover {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+      }
+
+      &:focus {
+        outline: 0.125rem solid var(--color-primary);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
+    }
+  }
+
+  &__main {
+    padding: 1.5rem 1rem;
+  }
+}

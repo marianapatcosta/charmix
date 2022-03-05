@@ -1,0 +1,37 @@
+.select {
+  select {
+    border: 0.2rem solid var(--color-secondary);
+    box-shadow: 0 0.125rem 0.2rem rgba($color-black, 0.5);
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 95%;
+    padding: 0.15rem;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    &:hover:not([disabled]) {
+      border: 0.2rem solid var(--color-tertiary);
+    }
+
+    option {
+      background-color: var(--color-primary);
+    }
+  }
+
+  &__asterisk {
+    color: $color-highlight;
+    font-weight: 700;
+  }
+}
