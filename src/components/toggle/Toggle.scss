@@ -1,0 +1,95 @@
+.toggle {
+  position: relative;
+
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0.125rem 0.2rem rgba($color-black, 0.5);
+    height: 1rem;
+    width: 2.4rem;
+    line-height: 85%;
+    position: relative;
+    padding: 0.125rem 0.2rem;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    border-radius: 2rem;
+    -webkit-border-radius: 2rem;
+    -moz-border-radius: 2rem;
+    -ms-border-radius: 2rem;
+    -o-border-radius: 2rem;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:before {
+      background-color: $color-highlight;
+      box-shadow: 0 0.125rem 0.125rem $color-highlight;
+      content: '';
+      height: 1.25rem;
+      width: 1.25rem;
+      left: -0.3rem;
+      bottom: -0.0625rem;
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+    }
+  }
+
+  input[type='checkbox'] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 1rem;
+  }
+
+  input[type='checkbox']:hover:not([disabled]) + span {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
+
+  input[type='checkbox']:checked + span {
+    background-color: var(--color-font);
+  }
+
+  input[type='checkbox']:disabled + span {
+    opacity: 0.7;
+    cursor: default;
+  }
+
+  input[type='checkbox']:focus + span {
+    outline: 0.125rem solid $color-highlight;
+  }
+
+  input[type='checkbox']:checked + span:before {
+    transform: translateX(1.6rem);
+    -webkit-transform: translateX(1.6rem);
+    -ms-transform: translateX(1.6rem);
+    -moz-transform: translateX(1.6rem);
+    -o-transform: translateX(1.6rem);
+  }
+
+  &__asterisk {
+    color: $color-highlight;
+    font-weight: 700;
+  }
+}

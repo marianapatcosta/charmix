@@ -1,0 +1,61 @@
+.about {
+  h5 {
+    font-size: 110%;
+    margin: 0.3rem 0;
+  }
+
+  p {
+    white-space: pre-line;
+    line-height: 1.1rem;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 0.3rem;
+  }
+
+  &__letter {
+    padding: 0.1rem;
+    font-weight: 700;
+    width: 1.2rem;
+    display: inline-block;
+    text-align: center;
+    border-radius: 0.25rem;
+    -webkit-border-radius: 0.25rem;
+    -moz-border-radius: 0.25rem;
+    -ms-border-radius: 0.25rem;
+    -o-border-radius: 0.25rem;
+
+    &--matched {
+      background-color: $color-green;
+      color: $color-white;
+    }
+
+    &--included {
+      background-color: $color-yellow;
+      color: $color-white;
+    }
+
+    &--not-matched {
+      background-color: $color-dark-grey;
+      color: lighten($color-dark-grey, 30%);
+      margin-right: 0.2rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  :deep {
+    .board {
+      grid-template-columns: repeat(var(--grid-columns), 1.5rem);
+      margin: 1rem 0 !important;
+    }
+    .game-cell {
+      width: 1.5rem;
+      height: 1.5rem;
+      min-width: max-content;
+      font-size: 150%;
+    }
+  }
+}
