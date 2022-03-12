@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Work+Sans&display=swap');
+@font-face {
+  font-family: 'Work Sans';
+  src: url('../fonts/NotoSerif-Bold.ttf') format('ttf'),
+    url('../fonts/NotoSerif-BoldItalic.ttf') format('ttf'),
+    url('../fonts/NotoSerif-Italic.ttf') format('ttf'),
+    url('../fonts/NotoSerif-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Noto Serif';
+  src: url('../fonts/WorkSans-Bold.ttf') format('ttf'),
+    url('../fonts/WorkSans-BoldItalic.ttf') format('ttf'),
+    url('../fonts/WorkSans-Italic.ttf') format('ttf'),
+    url('../fonts/WorkSans-Regular.ttf') format('ttf');
+}
 
 $font-primary: 'Work Sans', sans-serif;
 $font-title: 'Noto Serif', serif;

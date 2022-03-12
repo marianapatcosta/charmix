@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<HistogramProps>(), { histogramHeight: '10
 
 const maxBar = Math.max(...Object.values(props.histogramData));
 const histogramDataToDisplay = computed(() => Object.entries(props.histogramData));
-
+console.log(777, histogramDataToDisplay.value)
 const getBarHeight = (value: number): number => (value / maxBar) * 100 || 1;
 </script>
 <template>
@@ -31,7 +31,7 @@ const getBarHeight = (value: number): number => (value / maxBar) * 100 || 1;
       :aria-valuemax="maxBar"
       :max="maxBar"
     >
-      {{ bar[1] }}
+    {{ bar[1] ? bar[1] : ''}}
     </div>
   </div>
 </template>

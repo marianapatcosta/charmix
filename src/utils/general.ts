@@ -10,7 +10,7 @@ export const formatTime = (timeInMilliseconds: number): string => {
   return `${hours}:${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
 };
 
-export const deepClone = (objectToCopy: object): object => {
+export const deepClone = (objectToCopy: unknown): unknown => {
   // check if the value is a primitive
   if (typeof objectToCopy !== 'object' || objectToCopy === null) {
     return objectToCopy;
@@ -24,9 +24,20 @@ export const deepClone = (objectToCopy: object): object => {
     return new RegExp(objectToCopy);
   }
 
-  const copiedObject = Array.isArray(objectToCopy) ? [] : ({} as { [key: string]: unknown });
+  if (Array.isArray(objectToCopy)) {
+    const copiedObject = [] as Array<unknown>;
 
-  for (const key in objectToCopy as { [key: string]: unknown }) {
+    for (let index = 0; index < objectToCopy.length; index++) {
+      copiedObject.push(deepClone(objectToCopy[index]));
+    }
+
+    return copiedObject;
+  }
+
+  const copiedObject = {} as { [key: string]: unknown };
+
+  for (const key in objectToCopy) {
+    // @ts-ignore
     const value = objectToCopy[key];
     copiedObject[key] = deepClone(value);
   }

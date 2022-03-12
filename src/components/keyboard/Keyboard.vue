@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { onBeforeMount, onMounted, watch } from 'vue';
-import { KeyboardKey } from '@/types';
+import { KeyboardKey, LetterStatus } from '@/types';
 import { getAriaLabelForLetter, KEYBOARD_LETTERS, VALID_EVENTS } from '@/constants';
+import { useLocale } from '@/composables';
+
+const { t } = useLocale();
 
 interface KeyboardProps {
   keyboard: Array<KeyboardKey>;
@@ -47,7 +50,7 @@ watch(
       :key="`key-${key.value}`"
       :class="['keyboard__key', `keyboard__key--${key.status}`]"
       :data-key="key.value"
-      :aria-label="getAriaLabelForLetter(key.value, key.status)"
+      :aria-label="`${t('typeLetter', { letter: key.value })} ${getAriaLabelForLetter(key.value, key.status as LetterStatus)}`"
       @click="addLetter(key.value)"
     >
       {{ key.value }}

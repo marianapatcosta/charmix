@@ -45,6 +45,16 @@
       }
     }
   }
+  
+  &__privacy {
+    margin-top: 0.75rem;
+    font-style: italic;
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   :deep {
     .board {
@@ -55,7 +65,7 @@
       width: 1.5rem;
       height: 1.5rem;
       min-width: max-content;
-      font-size: 150%;
+      font-size: 125%;
     }
   }
 }

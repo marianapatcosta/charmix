@@ -6,8 +6,6 @@
   -o-transition: background-color 0.1s ease-in-out;
   padding: 0.2rem;
   width: 100%;
-
-  min-width: 2rem;
   aspect-ratio: 1;
   border: 0.2rem solid var(--color-secondary);
   box-shadow: 0 0.125rem 0.2rem rgba($color-black, 0.5);
@@ -53,14 +51,14 @@
   &--wave {
     animation: wave 0.25s;
     -webkit-animation: wave 0.25s;
-    animation-delay: calc(var(--animation-delay) * 0.3s);
+    animation-delay: calc(var(--animation-delay) * 0.25s);
   }
 }
 
 @media only screen and (min-width: $xs) {
   .game-cell {
-    max-width: 3.5rem;
     min-width: 3rem;
+    max-width: 3.5rem;
     font-size: 175%;
   }
 }

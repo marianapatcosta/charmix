@@ -6,7 +6,7 @@ import {
   DEFAULT_ROWS_NUMBER,
 } from '@/constants';
 import { useLocalStorage } from '@/composables';
-import { GameCellType, Theme } from '@/types';
+import { StoredGameSettings, Theme } from '@/types';
 
 export type StoreState = {
   isDarkMode: boolean;
@@ -32,7 +32,7 @@ export const useStore = defineStore('main', {
       this.isDarkMode = isDarkMode;
     },
     getStoredTheme() {
-      const storedIsDarkTheme = getStoredItem(COLLECTION_DARK_THEME);
+      const storedIsDarkTheme = getStoredItem(COLLECTION_DARK_THEME) as boolean;
       if (!storedIsDarkTheme) {
         const isDeviceThemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         this.setTheme(isDeviceThemeDark);
@@ -41,11 +41,13 @@ export const useStore = defineStore('main', {
       this.setTheme(storedIsDarkTheme);
     },
     getStoredGameSettings() {
-      const storedSettings = getStoredItem(COLLECTION_GAME_SETTINGS);
+      const storedSettings: StoredGameSettings =
+        getStoredItem(COLLECTION_GAME_SETTINGS) || ({} as StoredGameSettings);
       if (storedSettings) {
-        this.$patch((state: StoreState) => {
+        this.$patch(state => {
           for (const setting in storedSettings) {
-            state[setting as keyof StoreState] = storedSettings[setting as keyof StoreState];
+            state[setting as keyof StoreState] =
+              storedSettings[setting as keyof StoredGameSettings];
           }
         });
       }

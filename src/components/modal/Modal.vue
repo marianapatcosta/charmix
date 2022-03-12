@@ -6,14 +6,11 @@ interface ModalProps {
 }
 
 const { t } = useLocale();
-
 defineProps<ModalProps>();
-
 const emit = defineEmits<{ (event: 'close-modal'): void }>();
-
 const closeModal = () => emit('close-modal');
-</script>
 
+</script>
 
 <template>
   <div class="modal modal__overlay" @click="closeModal">

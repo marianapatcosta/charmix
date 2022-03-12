@@ -7,6 +7,7 @@ import Histogram from './histogram/Histogram.vue';
 import InputNumber from './input-number/InputNumber.vue';
 import Keyboard from './keyboard/Keyboard.vue';
 import Modal from './modal/Modal.vue';
+import PrivacyPolicy from './privacy-policy/PrivacyPolicy.vue';
 import Select from './select/Select.vue';
 import Settings from './settings/Settings.vue';
 import Statistics from './statistics/Statistics.vue';
@@ -23,6 +24,7 @@ export {
   InputNumber,
   Keyboard,
   Modal,
+  PrivacyPolicy,
   Select,
   Settings,
   Statistics,
