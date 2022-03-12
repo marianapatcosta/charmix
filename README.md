@@ -8,6 +8,8 @@ CharMix is a Progressive Web App developed with Vue3, TypeScript, Vite, Pinia an
 - Spanish (es-ES)
 - Italian (it-IT)
 
+![charmix](https://user-images.githubusercontent.com/43031902/158037964-2168aa69-2d0e-40da-a4cc-130a46c085b0.png)
+
 
 ## Available Scripts
 
