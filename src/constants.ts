@@ -1,5 +1,5 @@
 import { i18n } from '@/locales';
-import { Locale, InputData, KeyboardKey, LetterStatus, ModalData } from '@/types';
+import { Locale, InputData, KeyboardKey, LetterStatus } from '@/types';
 import { France, Germany, Italy, Portugal, Spain, UK } from '@/assets/icons';
 
 export const GAME_NAME = 'CharMix';
@@ -85,10 +85,11 @@ export const getAriaLabelForLetter = (letter: string, status: LetterStatus) => {
   return labels[status] || '';
 };
 
-export const MODALS_DATA: ModalData = {
+export const MODALS_DATA = {
   ABOUT: {
     title: 'about',
     component: 'About',
+    modalClass: '',
   },
   SETTINGS: {
     title: 'settings',
@@ -98,20 +99,31 @@ export const MODALS_DATA: ModalData = {
     title: 'statistics',
     component: 'Statistics',
   },
+  PRIVACY_POLICY: {
+    title: 'privacyPolicy',
+    component: 'PrivacyPolicy',
+  },
 };
 
 export const WORDLE_URL = 'https://www.nytimes.com/games/wordle/index.html';
 
+export const GITHUB_URL = 'https://github.com/marianapatcosta';
+
 export const GAME_EXAMPLES = {
   [Locale.EN]: { solution: 'PRIME', guess: 'MOIST' },
   [Locale.PT]: { solution: 'TEMPO', guess: 'PERNA' },
+  [Locale.DE]: { solution: 'LADEN', guess: 'NACHT' },
 };
 
-export const DICTIONARY_URL = (language: string, word: string): string =>
-  `https://api.dictionaryapi.dev/api/v2/entries/${language}/${word}`;
+export const DICTIONARY_URLS = (locale: string, word: string): string => {
+  const language = locale.split('-')[0];
+  const URLS = {
+    [Locale.EN]: `https://api.dictionaryapi.dev/api/v2/entries/${language}/${word}`,
+    [Locale.PT]: `https://api.dicionario-aberto.net/word/${word}`,
+  };
 
-export const DICTIONARY_PT_URL = (word: string): string =>
-  `https://api.dicionario-aberto.net/word/${word}`;
+  return URLS[locale];
+};
 
 export const SHOW_MORE_AT = 95;
 

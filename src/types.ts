@@ -90,9 +90,7 @@ export type StoredGameStatistics = {
   guessesDistribution: { [key: string]: number };
 };
 
-export type ModalData = {
-  [key: string]: { title: string; component: DefineComponent<{}, {}, any> };
-};
+export type ModalData = { title: string; component: string; };
 
 export type GameType = {
   currentRow: number;

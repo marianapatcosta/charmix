@@ -32,6 +32,10 @@ const getCellStatus = (index: number): LetterStatus => {
   return LetterStatus.NOT_MATCHED;
 };
 
+const emit = defineEmits<{ (event: 'open-privacy-policy'): void;}>();
+
+const openPrivacyPolicy = () => emit('open-privacy-policy');
+
 onMounted(() => {
   gameBoard[0].forEach((cell: GameCellType, index: number) => {
     cell.value = guess[index];
@@ -73,6 +77,7 @@ onMounted(() => {
         {{ letter }}
       </span>
     </i18n-t>
+    <button class="about__privacy" @click="openPrivacyPolicy">{{ t('privacyPolicy') }}</button>
   </div>
 </template>
 

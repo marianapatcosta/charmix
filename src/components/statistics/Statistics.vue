@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Share } from '@/assets/icons';
 import { Histogram } from '@/components';
 import { useLocale } from '@/composables';
 import { EMOJI_BOARD, GAME_STATISTICS } from '@/constants';
-import { getStatistics } from '@/utils/game-logic';
+import { getStatistics } from '@/utils/statistics';
 import { GameCellType, ToastType, StoredGameStatistics } from '@/types';
 
 interface StatisticsProps {
@@ -12,25 +11,13 @@ interface StatisticsProps {
   gameBoard: GameCellType[][];
 }
 
-const test = {
-  1: 2,
-  2: 0,
-  3: 2,
-  4: 6,
-  5: 5,
-  6: 10,
-  7: 8,
-  8: 0,
-  9: 0,
-  10: 4,
-  '❌': 5,
-};
+const { t } = useLocale();
+
 const props = defineProps<StatisticsProps>();
 const emit = defineEmits<{ (event: 'set-toast', message: string, type: ToastType): void }>();
-const { t, currentLocale } = useLocale();
-const statistics: StoredGameStatistics & { winRate: number } = getStatistics();
-const { numberOfGames, currentStreak, bestStreak, guessesDistribution } = statistics;
-statistics.winRate = ((numberOfGames - guessesDistribution.lost) / numberOfGames) * 100 || 0;
+const statistics: StoredGameStatistics & { winRate: number } = {...getStatistics(), winRate: 0 };
+const { numberOfGames, guessesDistribution } = statistics;
+statistics.winRate = Math.round(((numberOfGames - guessesDistribution['❌']) / numberOfGames) * 100) || 0;
 
 enum ShareType {
   GAME = 'Game',
@@ -88,13 +75,11 @@ const getStatisticsShareMessage = (): string =>
         </p>
       </div>
     </section>
-    <section class="statistics__histogram">
+    <section class="statistics__histogram" v-if="numberOfGames">
       <h5 class="statistics__subtitle">{{ t('guessesDistribution') }}</h5>
-
-      <!-- <Histogram :histogramData="guessesDistribution" /> -->
-      <Histogram :histogramData="test" />
+      <Histogram :histogramData="guessesDistribution" />
     </section>
-    <section class="statistics__share">
+    <section class="statistics__share"  v-if="numberOfGames">
       <h5 class="statistics__subtitle">{{ t('share') }}</h5>
       <div class="statistics__share-buttons">
         <button v-if="isGameOver" @click="share(ShareType.GAME)">

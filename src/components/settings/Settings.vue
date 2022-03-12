@@ -1,7 +1,7 @@
 <script setup lang="ts" >
-import { storeToRefs } from 'pinia';
+import { StoreState, storeToRefs } from 'pinia';
 import { InputNumber, Select, Toggle } from '@/components';
-import { useLocale, useTheme } from '@/composables';
+import { useLocale } from '@/composables';
 import { LocalesData, MIN_COLUMNS_ROWS, MAX_COLUMNS_ROWS } from '@/constants.ts';
 import { useStore } from '@/store';
 
@@ -27,7 +27,7 @@ const onThemeUpdate = (event: Event) => {
 
 const onCheckboxUpdate = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  store.updateGameSettingsItem(target.name, target.checked);
+  store.updateGameSettingsItem(target.name as keyof StoreState, target.checked);
 };
 
 const onInputUpdate = (event: Event) => {

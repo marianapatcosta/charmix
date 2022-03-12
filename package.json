@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "prebuild": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -11,7 +12,7 @@
     "pinia": "^2.0.11",
     "sass": "^1.49.7",
     "vue": "^3.2.25",
-    "vue-i18n": "9.1.6"
+    "vue-i18n": "^9.1.9"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -20,6 +21,8 @@
     "types": "^0.1.1",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
-    "vue-tsc": "^0.29.8"
+    "vite-plugin-pwa": "^0.11.13",
+    "vue-tsc": "^0.29.8",
+    "workbox-precaching": "^6.5.1"
   }
 }

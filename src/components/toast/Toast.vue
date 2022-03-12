@@ -16,6 +16,7 @@ interface ToastProps {
 const { t } = useLocale();
 
 const props = withDefaults(defineProps<ToastProps>(), {
+  message: '',
   type: ToastType.INFO,
   autoDismissable: true,
   timeToAutoDismiss: DEFAULT_AUTODISMISS_TIME,

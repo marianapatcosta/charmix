@@ -13,6 +13,7 @@
   "checkMyStatistics": "Check my CharMix's Stats!",
   "columnsNumber": "Number of letters (4 - 10)",
   "copiedToClipboard": "Copied to clipboard.",
+  "correctWord": "Correct word: {word}",
   "currentStreak": "current streak",
   "darkMode": "Dark mode",
   "disable": "disable",
@@ -35,10 +36,12 @@
   "howToPlay5": "Letter {0} exists in the word but in another position.",
   "howToPlay6": "Letters {0} don't exist in the word.",
   "impressive": "Impressive!! 😎 👌",
+  "incredible": "Incredible!! 😎 👌",
   "includedLetter": "Letter {letter} exists in the word to guess but in another position.",
   "invalidWordError": "Invalid word!",
   "italian": "italian",
   "language": "Language",
+  "lossMessage": "You lost! 😞 😥 😭",
   "lowLetterNumberError": "Only words with {numberOfLetters} letters are valid!",
   "magnificent": "Magnificent!!! 🤯 🎉",
   "matchedLetter": "Letter {letter} exists in the word to guess in this position.",
@@ -55,6 +58,7 @@
   "spanish": "espanol",
   "statistics": "Statistics",
   "toastDismiss": "Click to dismiss toast message.",
+  "typeLetter": "Click to type letter {letter}.",
   "unbelievable": "Unbelievable!!! 😲 🎆 💯",
   "winRate": "winnings"
 }

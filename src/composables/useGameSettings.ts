@@ -15,7 +15,7 @@ const useGameSettings = (): UseGameSettingsProps => {
   const gameSettings: GameSettings = {} as GameSettings;
 
   const getStoredSettings = () => {
-    const storedLocale = getStoredItem(COLLECTION_LOCALE);
+    const storedLocale = getStoredItem<string>(COLLECTION_LOCALE);
     if (!!storedLocale) {
       (i18n.global.locale as any).value = storedLocale;
       return;

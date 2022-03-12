@@ -1,4 +1,4 @@
-$max-width: 30rem;
+$max-width: 35rem;
 
 body {
   color: var(--color-font);
@@ -62,7 +62,6 @@ button {
     height: max-content;
     overflow: auto;
     padding: 1rem 0.5rem 0.5rem;
-    width: 100%;
 
     &::-webkit-scrollbar {
       display: none;
@@ -128,13 +127,24 @@ button {
   }
 }
 
-@media only screen and (min-width: $lg) {
+@media only screen and (min-width: $sm) {
   #app {
     .board {
-      align-self: center;
+      margin: auto;
+    }
+
+    .keyboard {
+      max-width: $max-width;
+      margin: 0 auto;
     }
   }
 }
 
-@media only screen and (min-width: $xl) {
+@media only screen and (min-width: $lg) {
+  #app {
+    .board {
+      margin: 0 auto auto;
+      align-self: center;
+    }
+  }
 }

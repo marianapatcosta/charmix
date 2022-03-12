@@ -25,20 +25,19 @@ import {
 import {
   defineInitialGameBoard,
   defineInitialKeyboard,
-  getWords,
-  getRandomWord,
   updateKeyboardLetterState,
   saveOngoingGame,
   includesAllGuessedLetters,
   getGameOverMessage,
+  getGameValuesToUpdate,
 } from '@/utils/game-logic';
-import { areWordsEqual, findWordInList } from './utils/general';
-import { deepClone } from '@/utils/general';
+import { areWordsEqual, deepClone, findWordInList } from './utils/general';
+import { updateGameStatistics } from '@/utils/statistics';
 import {
   fetchWordDefinition,
-  getGameValuesToUpdate,
-  updateGameStatistics,
-} from './utils/game-logic';
+  getWords,
+  getRandomWord,
+} from './utils/words';
 const { Definition, GameBoard, Header, Keyboard, Modal, Toast } = components;
 
 const { t, currentLocale, getStoredLocale } = useLocale();
@@ -47,6 +46,7 @@ const { getStoredItem, removeStoredItem } = useLocalStorage();
 const store = useStore();
 const { columnsNumber, rowsNumber, hardMode } = storeToRefs(store);
 const [words, setWords] = useState<string[]>([]);
+const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
 
 const initialGameState: GameType = {
   currentRow: 0,
@@ -107,7 +107,7 @@ const checkGuess = () => {
     return onCheckError(t('lowLetterNumberError', { numberOfLetters: columnsNumber.value }));
   }
   const currentGuess = [...game.gameBoard[game.currentRow]].map(({ value }) => value).join('');
-  const wordInList = findWordInList(currentGuess, words.value);
+  const wordInList = findWordInList(currentGuess, words.value as string[]);
 
   if (!wordInList) {
     return onCheckError(t('invalidWordError'));
@@ -124,7 +124,7 @@ const checkGuess = () => {
     return onGameOver(GameStatus.WIN);
   }
 
-  if (currentRow.value >= rowsNumber.value) {
+  if (currentRow.value >= rowsNumber.value - 1) {
     return onGameOver(GameStatus.LOST);
   }
 
@@ -150,6 +150,9 @@ const onGameOver = (gameStatus: GameStatus) => {
     addCellAnimation(animation);
   }, delayToFinishFlip.value);
 
+
+  const finalAnimationDuration =  gameStatus === GameStatus.WIN  ? 1 * columnsNumber.value : 1;
+
   setTimeout(() => {
     setToastData(
       t(getGameOverMessage(currentRow.value, rowsNumber.value, gameStatus === GameStatus.LOST), {
@@ -159,7 +162,7 @@ const onGameOver = (gameStatus: GameStatus) => {
     );
     openModal(MODALS_DATA.STATISTICS);
     // 1.5 because wave/shake animations have 0.25s duration instead of 0.5s
-  }, delayToFinishFlip.value * 1.5 + 1000);
+  }, delayToFinishFlip.value + finalAnimationDuration + 2000);
 };
 
 const resetGame = () => {
@@ -170,7 +173,7 @@ const resetGame = () => {
   keyboard.value = defineInitialKeyboard();
   guessedLetters.value = initialGameState.guessedLetters;
   isGameDisabled.value = initialGameState.isGameDisabled;
-  wordToGuess.value = getRandomWord(words.value);
+  setupWord();
   removeStoredItem(COLLECTION_ONGOING_GAME);
 };
 
@@ -224,7 +227,8 @@ const setToastData = (message: string, type: ToastType | null) => {
 };
 
 const addCellAnimation = (animation: string) =>
-  gameBoard.value[currentRow.value].forEach((cell: GameCellType) => (cell.animation = animation));
+
+    gameBoard.value[currentRow.value].forEach((cell: GameCellType) => (cell.animation = animation));
 
 const clearCellAnimation = () => {
   gameBoard.value[currentRow.value].forEach((cell: GameCellType) => delete cell.animation);
@@ -241,6 +245,7 @@ const openModal = (modalData: ModalData) => {
   setModalData(modalData);
   isGameDisabled.value = true;
 };
+
 const closeModal = () => {
   setModalData(null);
   isGameDisabled.value = false;
@@ -249,15 +254,24 @@ const closeModal = () => {
   }
 };
 
+const openPrivacyPolicy = () => {
+  closeModal();
+  setTimeout(() => {
+    openModal(MODALS_DATA.PRIVACY_POLICY);
+  }, 300);
+}
+
 const setupWord = async () => {
-  const word = getRandomWord(words.value);
+  const word = getRandomWord(words.value as string[]);
   wordToGuess.value = word;
-  const definition = await fetchWordDefinition(word) || '';
-  setDictionaryDefinition(definition);
+  if (isOnline.value) {
+    const definition = await fetchWordDefinition(word) || '';
+    setDictionaryDefinition(definition);
+  }
 };
 
 const onGameInit = async () => {
-  const storedGame = getStoredItem(COLLECTION_ONGOING_GAME) as StoredGame;
+  const storedGame = getStoredItem<StoredGame>(COLLECTION_ONGOING_GAME);
 
   if (storedGame) {
     updateKeyboardLetterState(storedGame.keyboard, keyboard.value);
@@ -276,6 +290,9 @@ const onGameInit = async () => {
   if (!wordToGuess.value) {
     setupWord();
   }
+};
+const updateOnlineStatus = (event: Event) => {
+  setIsOnline(event.type === 'online')
 };
 
 watch([currentLocale, columnsNumber], async () => {
@@ -296,12 +313,17 @@ onMounted(async () => {
   const words = await getWords(columnsNumber.value);
   setWords(words);
   onGameInit();
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
 });
 
-onBeforeUnmount(() =>
-  currentGameStatus.value === GameStatus.PLAYING
-    ? saveOngoingGame(keyboard.value, gameBoard.value, wordToGuess.value)
-    : removeStoredItem(COLLECTION_ONGOING_GAME)
+onBeforeUnmount(() => {
+  window.removeEventListener('online', updateOnlineStatus);
+  window.removeEventListener('offline', updateOnlineStatus);
+    currentGameStatus.value === GameStatus.PLAYING
+      ? saveOngoingGame(keyboard.value, gameBoard.value, wordToGuess.value, guessedLetters.value)
+      : removeStoredItem(COLLECTION_ONGOING_GAME)
+    }
 );
 </script>
 
@@ -309,7 +331,7 @@ onBeforeUnmount(() =>
   <Header @open-modal="openModal" @reset-game="resetGame" />
   <GameBoard :board="gameBoard.flat()" :style="cssGridVars" />
   <Keyboard :keyboard="keyboard" :disabled="isGameDisabled" @select-letter="selectLetter" />
-  <transition name="fade">
+  <transition name="fade" mode="out-in">
     <Modal v-if="!!modalData" :title="t(modalData.title)" @close-modal="closeModal">
       <component
         :is="components[modalData.component]"
@@ -317,6 +339,7 @@ onBeforeUnmount(() =>
         :isGameStarted="isGameStarted"
         :gameBoard="gameBoard"
         @set-toast="setToastData"
+        @open-privacy-policy="openPrivacyPolicy"
       />
     </Modal>
   </transition>

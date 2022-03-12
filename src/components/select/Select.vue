@@ -22,7 +22,7 @@ defineProps<SelectProps>();
     <select :name="name" :value="value" :aria-label="ariaLabel" :disabled="disabled">
       <option
         v-for="option in options"
-        :key="`${name}-${optionLabelKey ? t(option[optionLabelKey]) : t(option)}`"
+        :key="`${name}-${optionLabelKey ? t(option[optionLabelKey] as string) : t(option )}`"
         :value="optionValueKey ? option[optionValueKey] : option"
       >
         {{ optionLabelKey ? t(option[optionLabelKey]) : t(option) }}

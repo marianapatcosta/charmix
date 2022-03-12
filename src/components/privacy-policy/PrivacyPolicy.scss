@@ -1,0 +1,11 @@
+.privacy-policy {
+  p {
+    white-space: pre-line;
+    line-height: 1.1rem;
+    margin-bottom: 0.5rem;
+
+    &:first-child {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

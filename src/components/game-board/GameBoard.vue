@@ -14,7 +14,7 @@ defineProps<GameBoardProps>();
       v-for="(cell, index) in board"
       :key="`letter-${cell.value}-${index}`"
       :data="cell"
-      :index="index"
+      :cellIndex="index"
     />
   </div>
 </template>

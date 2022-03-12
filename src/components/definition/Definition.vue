@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useLocale } from '@/composables';
 import { computed } from 'vue';
 
 interface DefinitionProps {
@@ -7,6 +8,7 @@ interface DefinitionProps {
   wordDefinition: string;
   showMoreAt: number;
 }
+const { t } = useLocale()
 
 const props = defineProps<DefinitionProps>();
 
@@ -17,19 +19,13 @@ const word = computed(() => `${props.wordToGuess[0]?.toUpperCase()}${props.wordT
     <h6>{{ title }}</h6>
     <details v-if="wordDefinition">
       <summary>
-        <strong> {{ word }}</strong>
+        <strong> {{ t('correctWord', { word }) }}</strong>
         <br />
-        <p>{{ wordDefinition.slice(0, showMoreAt) }}</p>
       </summary>
-      <p>{{ wordDefinition.slice(showMoreAt) }}</p>
+      <p>{{ wordDefinition }}</p>
     </details>
-    <p v-else-if="wordDefinition?.length < showMoreAt">
-      <strong> {{ word }}</strong>
-      <br />
-      {{ wordDefinition }}
-    </p>
     <p v-else>
-      <strong> {{ word }}</strong>
+      <strong> {{ t('correctWord', { word }) }}</strong>
     </p>
   </div>
 </template>
