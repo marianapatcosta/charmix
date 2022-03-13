@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      base: '/charmix/',
+      base: '/',
       srcDir: 'src',
       filename: 'sw.ts',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
@@ -61,11 +61,13 @@ export default defineConfig({
       },
       injectManifest: {
         globPatterns: ['**.{html, js, css, svg, json}', '**'],
+        globIgnores: ['**/node_modules/**/*'],
         maximumFileSizeToCacheInBytes: 3000000,
       },
       workbox: {
         cleanupOutdatedCaches: false,
         sourcemap: true,
+        globIgnores: ['**/node_modules/**/*'],
       },
     }),
   ],
