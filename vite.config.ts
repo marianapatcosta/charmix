@@ -13,7 +13,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-  /*   VitePWA({
+    VitePWA({
       base: '/charmix/',
       srcDir: 'src',
       filename: 'sw.ts',
@@ -63,8 +63,8 @@ export default defineConfig({
         cleanupOutdatedCaches: false,
         sourcemap: true,
       },
-    }),*/
-  ], 
+    }),
+  ],
   css: {
     preprocessorOptions: {
       scss: {
