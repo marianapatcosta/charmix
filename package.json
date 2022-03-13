@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "dev-remote": "vite --host --https",
     "build": "vue-tsc --noEmit && vite build",
     "prebuild": "vite build",
     "preview": "vite preview"

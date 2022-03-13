@@ -26,12 +26,12 @@ export default defineConfig({
       manifest: {
         name: 'CharMix',
         short_name: 'CharMix',
-        theme_color: '#313f75',
+        theme_color: '#06080f',
         description:
           'CharMix is a word game based on Wordle, but has the following extra features: \n - Can be at any time, no need to wait for the next day to play again; \n - Customizable number of letters of word to guess, between 4 and 10; \n  - Customizable number of tries, between 4 and 10; \n - Customizable game language.',
         start_url: '/',
         display: 'standalone',
-        background_color: '#313f75',
+        background_color: '#06080f',
         icons: [
           {
             src: 'images/android-chrome-192x192.png',
