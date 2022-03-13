@@ -315,6 +315,12 @@ onMounted(async () => {
   onGameInit();
   window.addEventListener('online', updateOnlineStatus);
   window.addEventListener('offline', updateOnlineStatus);
+
+  // workaround to overcome the incorrect set of 100vh by mobile browsers when address bar is visible 
+  if (window.matchMedia('(max-width: 480px)').matches) {
+    const app = document.getElementById('app');
+    app && (app.style.height = `${window.innerHeight}px`);
+  }
 });
 
 onBeforeUnmount(() => {
