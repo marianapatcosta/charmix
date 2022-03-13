@@ -18,10 +18,10 @@ const resetGame = () => emit('reset-game');
         :aria-label="t('openModal', { modal: t('about') })"
         @click="openModal(MODALS_DATA.ABOUT)"
       >
-        <img :src="Info" />
+        <img :src="Info" :alt="t('about')"  />
       </button>
-      <button :aria-label="t('openModal', { modal: 'reset' })" @click="resetGame">
-        <img :src="Reset" />
+      <button :aria-label="t('resetGame')" @click="resetGame">
+        <img :src="Reset" :alt="t('reset')" />
       </button>
     </div>
     <h1>
@@ -33,13 +33,13 @@ const resetGame = () => emit('reset-game');
         :aria-label="t('openModal', { modal: t('statistics') })"
         @click="openModal(MODALS_DATA.STATISTICS)"
       >
-        <img :src="Statistics" />
+        <img :src="Statistics" :alt="t('statistics')" />
       </button>
       <button
         :aria-label="t('openModal', { modal: t('settings') })"
         @click="openModal(MODALS_DATA.SETTINGS)"
       >
-        <img :src="Settings" />
+        <img :src="Settings" :alt="t('settings')" />
       </button>
     </div>
   </header>

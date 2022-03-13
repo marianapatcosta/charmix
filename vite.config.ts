@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      base: '/',
+      base: '/charmix/',
       srcDir: 'src',
       filename: 'sw.ts',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
@@ -34,6 +34,7 @@ export default defineConfig({
             src: 'images/android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png',
+            purpose: 'any maskable',
           },
           {
             src: 'images/android-chrome-512x512.png',
