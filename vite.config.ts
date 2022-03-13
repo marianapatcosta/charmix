@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      base: '/charmix/',
+      base: '/',
       srcDir: 'src',
       filename: 'sw.ts',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
