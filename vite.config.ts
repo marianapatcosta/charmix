@@ -11,10 +11,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 3000,
+  },
   plugins: [
     vue(),
     VitePWA({
-      base: '/',
+      base: '/charmix/',
       srcDir: 'src',
       filename: 'sw.ts',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
@@ -58,6 +61,7 @@ export default defineConfig({
       },
       injectManifest: {
         globPatterns: ['**.{html, js, css, svg, json}', '**'],
+        maximumFileSizeToCacheInBytes: 3000000,
       },
       workbox: {
         cleanupOutdatedCaches: false,
