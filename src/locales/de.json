@@ -1,6 +1,6 @@
 {
   "about": "Über CharmMix",
-  "about1": "{0} ist ein Wortenspiel, das auf dem viralen {1} basiert, aber die folgenden zusätzlichen Funktionen hat: \n - Kann jederzeit sein, Sie müssen nicht auf den nächsten Tag warten, um wieder zu spielen; \n - Anpassbare Anzahl Buchstaben (zwischen 4 und 10); \n  - Anpassbare Anzahl der Versuche (zwischen 4 und 109; \n - Customizable game language.",
+  "about1": "{0} ist ein Wortenspiel, das auf dem viralen {1} basiert, aber die folgenden zusätzlichen Funktionen hat: \n - Kann jederzeit sein, Sie müssen nicht auf den nächsten Tag warten, um wieder zu spielen; \n - Anpassbare Anzahl Buchstaben (zwischen 4 und 10); \n  - Anpassbare Anzahl der Versuche (zwischen 4 und 10); \n - Anpassbare Spielsprache.",
   "amazing": "Tolle!!! 🤩 🥳",
   "bestStreak": "bester Streifen",
   "cannotUpdateError": "Kann nur vor Spielstart aktualisiert werden.",
