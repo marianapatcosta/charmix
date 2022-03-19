@@ -27,6 +27,7 @@
   "guessedLettersNotIncludedError": "Schwermodus an: Ihre neue Vermutung sollte alle erratenen Buchstaben enthalten!",
   "guessesDistribution": "Vermutungen Verteilung",
   "hardMode": "schwermodus",
+  "here": "hier",
   "histogramBarLabel": "Bar {bar} mit Wert von {value}.",
   "howToPlay": "Spielanleitung",
   "howToPlay1": "Erraten Sie das Wort in der vordefinierten Anzahl der Versuche.",
@@ -48,8 +49,15 @@
   "modalClose": "Klicken Sie hier, um die Modal zu schließen.",
   "notMatchedLetter": "Der Buchstaben {0} existiert im Wort nicht.",
   "openModal": "Klicken Sie hier, um {modal} zu anzeigen.",
-  "numberOfGames": "Spiele gespielt",
+  "numberOfGames": "gespielten Spiele",
   "phew": "Puh! 😅 👊",
+  "privacyPolicy": "Datenschutzrichtlinie",
+  "privacyPolicyDate": "Letztes Update: 12. März 2022.",
+  "privacyPolicyTerms1": "CharMix lädt, speichert, verwendet oder teilt keine Ihrer Datena.",
+  "privacyPolicyTerms2": "Die App CharMix erhebt weder Daten noch impliziert eine Datenerhebung durch Dritte oder Vermittler. Alle beim Spielen von CharMix erhobenen Daten (Anzahl der gespielten Spiele, Gewinne und zugehörige Spieldaten) werden grundsätzlich in Ihrem Browser gespeichert. Die im Browser gespeicherten Daten sind containerisiert, das ist mit auf diese Anwendung beschränktem Zugriff gespeichert und können nicht von anderen auf dem Gerät installierten Apps aufgerufen werden.",
+  "privacyPolicyTerms3": "Diese Datenschutzrichtlinie kann von Zeit zu Zeit aktualisiert werden. Wir werden Sie über alle Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen und das Datum das „letztes Update“ oben in dieser Datenschutzrichtlinie aktualisieren.",
+  "privacyPolicyTerms4": "Es wird empfohlen, diese Datenschutzrichtlinie regelmäßig auf Änderungen zu überprüfen. Änderungen an dieser Datenschutzrichtlinie treten in Kraft, wenn sie auf dieser Seite veröffentlicht werden.",
+  "privacyPolicyTerms5": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, können Sie uns kontaktieren {0}.",
   "portuguese": "Portugiesisch",
   "resetGame": "Spiel zurücksetzen",
   "rowsNumber": "Anzahl derVersuche (4 - 10)",
@@ -61,5 +69,5 @@
   "typeLetter": "Klicken Sie, um den Buchstaben {letter} einzugeben.",
   "toastDismiss": "Klicken Sie hier, um die Toast-Nachricht zu schließen.",
   "unbelievable": "Unglaublich!!! 😲 🎆 💯",
-  "winRate": "Gewinn"
+  "winRate": "von Siegen"
 }
