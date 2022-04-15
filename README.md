@@ -10,6 +10,8 @@ CharMix is a Progressive Web Ap developed with Vue3, TypeScript, Vite, Pinia and
 
 Play it [here](https://charmix.surge.sh/).
 
+Download from [Google Play Store](https://play.google.com/store/apps/details?id=io.costa.mariana.charmix/).
+
 ![charmix](https://user-images.githubusercontent.com/43031902/158037964-2168aa69-2d0e-40da-a4cc-130a46c085b0.png)
 
 This project consumes [Free Dictionary API](https://dictionaryapi.dev/) and [Dicionário Aberto API of Universidade do Minho](https://api.dicionario-aberto.net).
